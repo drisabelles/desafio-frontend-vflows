@@ -1,6 +1,8 @@
 <div align="center">
 
-<img src="docs/assets/logo.png" > 
+<img src="docs/assets/logo.png"> 
+
+<br />
 
   # Desafio Front-End VFlows
 
@@ -30,14 +32,16 @@ O desenvolvimento do formulário deve seguir o layout existente na guia: [Layout
 - JAVASCRIPT: Dar preferência a ao ECMA-6 no desenvolvimento do código;
 
 - BOOTSTRAP:
-    - CSS
-    - JQUERY-3.5.1
+    - [CSS](https://fluig.totvs.com/style-guide/css/fluig-style-guide.min.css)
+    - [JQUERY-3.5.1](https://jquery.com/download/)
 
 
 - Outras Considerações:
 
-    - Usar documentação de recursos e estilos conforme este link
+    - Usar documentação de recursos e estilos conforme [este link](https://style.fluig.com/)
     - Não deverão ser utilizados outros recursos tecnológicos para desenvolvimento
+ 
+<br />
 
 ## 📋 Requisitos do Formulário<a name="form-requirements"></a>
 
@@ -65,15 +69,16 @@ O desenvolvimento do formulário deve seguir o layout existente na guia: [Layout
 - Botão Visualizar (olho)
     - Ao visualizar o documento, deve ser feito o download
 - Botão Salvar Fornecedor
-    - Obs.: ao clicar no botão, deverá ser aberto modal de loading de envio, e deverá ser formatado um JSON com os dados a serem enviados, conforme exemplo: jsonExemplo
+    - Obs.: ao clicar no botão, deverá ser aberto modal de loading de envio, e deverá ser formatado um JSON com os dados a serem enviados, conforme exemplo: [jsonExemplo](https://github.com/drisabelles/desafio-frontend-vflows/blob/main/jsonExemplo/jsonExemplo.json)
     - Obs. sobre o JSON: o JSON de resultado pode ser baixado ou apenas exibido no console do browser.
 
 <br />
 
 ## 🎨 Layout <a name="layout"></a>
 
-O layout do desafio está em anexo na pasta docs deste repositório.
+O layout do desafio está em anexo na pasta [docs](https://github.com/drisabelles/desafio-frontend-vflows/blob/main/docs/CadastroFornecedorModelo.pdf) deste repositório.
 
+<br />
 
 ## 🗂️ Organização das pastas <a name="folders"></a>
 
