@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Fornecedor/Produto</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="mx-5 mt-4 mb-5">
+        <h3 class="text-center mb-3">CADASTRO FORNECEDOR/PRODUTO</h3>
+        <div class="rounded-top bg-info text-white p-1">
+            <h5 class="mt-2 ml-2">Dados do Fornecedor</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-4 mt-0">
+            <form id="form-fornecedor">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="razao_social" style="display: block" class="font-weight-bold">Razão Social</label>
+                        <input type="text" class="form-control" id="razao_social" name="razao_social" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cnpj" style="display: block" class="font-weight-bold">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" maxlength="14" onkeypress="$(this).mask('00.000.000/0000-00')" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="nome_fantasia" style="display: block" class="font-weight-bold">Nome Fantasia</label>
+                        <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inscricao_estadual" style="display: block" class="font-weight-bold">Inscrição Estadual</label>
+                        <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual" maxlength="15">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="cep" style="display: block" class="font-weight-bold">CEP</label>
+                        <input type="text" class="form-control" id="cep" name="cep" onchange="buscarEnderecoPorCep()" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inscricao_municipal" style="display: block" class="font-weight-bold">Inscrição Municipal</label>
+                        <input type="text" class="form-control" id="inscricao_municipal" name="inscricao_municipal" maxlength="15">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="endereco" style="display: block" class="font-weight-bold">Endereço</label>
+                        <input type="text" class="form-control" id="endereco" name="endereco" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numero" style="display: block" class="font-weight-bold">Número</label>
+                        <input type="text" class="form-control" id="numero" name="numero" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="complemento" style="display: block" class="font-weight-bold">Complemento</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento">
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <label for="bairro" style="display: block" class="font-weight-bold">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" name="bairro" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="municipio" style="display: block" class="font-weight-bold">Município</label>
+                        <input type="text" class="form-control" id="municipio" name="municipio" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="estado" style="display: block" class="font-weight-bold">Estado</label>
+                        <input type="text" class="form-control" id="estado" name="estado" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="contato" style="display: block" class="font-weight-bold">Nome da pessoa de contato</label>
+                        <input type="text" class="form-control" id="contato" name="contato" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="telefone" style="display: block" class="font-weight-bold">Telefone</label>
+                        <input type="tel" class="form-control" id="telefone" name="telefone" onkeypress="$(this).mask('(00) 0000-00009')" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email" style="display: block" class="font-weight-bold">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class=" rounded-top bg-info text-white p-1 mt-4">
+            <h5 class="mt-2 ml-2">Produtos</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-2">
+            <table id="tabela_produtos" class="table table-borderless">
+                <tbody>
+                </tbody>
+            </table>
+            <button onclick="adicionarProduto()" id="incProd" class="btn btn-success w-100">Adicionar Produto</button>
+        </div>
+
+        <div class="rounded-top bg-info text-white p-1 mt-4">
+            <h5 class="mt-2 ml-2">Anexos</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-2">
+            <table id="tabela_anexos" class="table table-borderless">
+                <tbody>
+                </tbody>
+            </table>
+            <input type="file" id="documentoInput" accept=".pdf, .doc, .docx" class="mb-3">
+            <button onclick="incluirAnexo()" id="incAnexo" class="btn btn-success w-100">Incluir Anexo</button>
+        </div>
+
+        <button onclick="salvarFornecedor()" class="btn btn-success w-100 mt-4">Salvar Fornecedor</button>
+    </div>
+
+    <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Seu formulário está sendo enviado. Obrigado!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
